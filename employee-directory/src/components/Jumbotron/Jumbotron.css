@@ -1,0 +1,7 @@
+.jumbotron {
+    background: darkolivegreen !important;
+    color: white !important;
+    border-bottom: solid;
+    border-bottom-color: black !important;
+    border-bottom-width: 15px;
+  }

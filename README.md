@@ -5,8 +5,6 @@
 
 Created with React, this application will allow a user to view their entire employee directory at once so that they have quick access to their information.
 
-This is an example of how to access the readme generator via the command line. 
-
 ## Table of Contents 
 
 * [Installation](#installation)
