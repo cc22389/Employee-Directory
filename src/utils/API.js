@@ -1,14 +1,11 @@
 import axios from "axios";
 
-const BASEURL = "https://randomuser.me/api/?results=200&nat=us";
-const APIKEY = "&api_key=dc6zaTOxFJmzC&limit=20";
+// Export an object containing methods we'll use for accessing the GitHub Jobs API
 
-// Export an object with a "search" method that searches the Giphy API for the passed query
 export default {
-  search: function(query) {
-    return axios.get(BASEURL + query + APIKEY);
+  searchTerms: function() {
+    return axios.get(
+      "https://jsonplaceholder.typicode.com/users" 
+    );
   }
 };
-
-
-// axios.get("https://randomuser.me/api/?results=200&nat=us");

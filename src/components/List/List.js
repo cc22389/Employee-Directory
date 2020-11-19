@@ -1,61 +1,73 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./List.css";
 
-
 function List(props) {
+  const [error, setError] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [items, setItems] = useState([]);
+  const itemsToDisplay = items.filter(i => i.name.first.includes(props.filterString) || i.name.last.includes(props.filterString));
 
-  return (
-    <ul className="list-group">
-      {props.ED.map(item => (
-        <li className="list-group-item" key={item.id}>
-          {item.name} {""}
-          {item.phone} {""}
-          {item.email} {""}
-          {item.DOB} {""}
+  useEffect(() => {
+    fetch("https://randomuser.me/api/?results=200&nat=us")
+      .then(res => res.json())
+      .then(
+        (result) => {
+          setIsLoaded(true);
+          setItems(result.results);
+        },
+        (error) => {
+          setIsLoaded(true);
+          setError(error);
+        }
+      )
+  }, []);
+
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  } else if (!isLoaded) {
+    return <div>Loading...</div>;
+  } else {
+    return (
+      <ul>
+        <div className="row">
+          <div className="col">
+            <p>Image</p>
+          </div>
+          <div className="col">
+            <p>Name</p>
+          </div>
+          <div className="col">
+            <p>Phone</p>
+          </div>
+          <div className="col">
+            <p>Email</p>
+          </div>
+          <div className="col">
+            <p>DOB</p>
+          </div>
+        </div>
+        <li>
+          {itemsToDisplay.map((item, index) => (
+            <li key={index}>
+              <p>
+                <img src={item.picture.thumbnail} alt="Thumbnail" />
+                &nbsp;
+                {item.name.first} {item.name.last}
+                 &nbsp;
+                {item.email}
+              </p>
+            </li>
+          ))
+          }
         </li>
-      ))}
-    </ul>
-    // <ul className="list-group">
-    //   <div class= "row">
-    //       <div class= "col">
-    //         <li className="list-group-item">Image</li>
-    //       </div>
-    //       <div class= "col">
-    //         <li class="list-group-item">Name</li>
-    //       </div>
-    //       <div class= "col">
-    //         <li class="list-group-item">Phone</li>
-    //       </div>
-    //       <div class= "col">
-    //         <li class="list-group-item">Email</li>
-    //       </div>
-    //       <div class= "col">
-    //         <li class="list-group-item">DOB</li>
-    //       </div>
-    //     </div>
-    //   {props.ED.map(item => (
-    //     <div class= "row">
-    //       <div class= "col">
-    //         <li className="list-group-item" key={item.id}></li>
-    //       </div>
-    //       <div class= "col">
-    //         <li class="list-group-item">{item.name}</li>
-    //       </div>
-    //       <div class= "col">
-    //         <li class="list-group-item">{item.phone}</li>
-    //       </div>
-    //       <div class= "col">
-    //         <li class="list-group-item">{item.email}</li>
-    //       </div>
-    //       <div class= "col">
-    //         <li class="list-group-item">{item.DOB}</li>
-    //       </div>
-    //     </div>
-    //   ))}
-    // </ul>
-    
-  );
+      </ul >
+    );
+  }
 }
+
+
+
 
 export default List;
 
