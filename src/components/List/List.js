@@ -7,6 +7,8 @@ function List(props) {
   const [items, setItems] = useState([]);
   const itemsToDisplay = items.filter(i => i.name.first.includes(props.filterString) || i.name.last.includes(props.filterString));
 
+
+
   useEffect(() => {
     fetch("https://randomuser.me/api/?results=200&nat=us")
       .then(res => res.json())
@@ -28,46 +30,37 @@ function List(props) {
   } else if (!isLoaded) {
     return <div>Loading...</div>;
   } else {
-    return (
-      <ul>
-        <div className="row">
-          <div className="col">
-            <p>Image</p>
-          </div>
-          <div className="col">
-            <p>Name</p>
-          </div>
-          <div className="col">
-            <p>Phone</p>
-          </div>
-          <div className="col">
-            <p>Email</p>
-          </div>
-          <div className="col">
-            <p>DOB</p>
-          </div>
-        </div>
-        <li>
-          {itemsToDisplay.map((item, index) => (
-            <li key={index}>
-              <p>
-                <img src={item.picture.thumbnail} alt="Thumbnail" />
-                &nbsp;
-                {item.name.first} {item.name.last}
-                 &nbsp;
-                {item.email}
-              </p>
-            </li>
-          ))
-          }
-        </li>
-      </ul >
-    );
+    return itemsToDisplay.map((item, index) => {
+      return (
+        <table id= "table" className="table">
+          {/* <thead>
+            <tr>
+            <th scope="row"></th>
+              <th scope="col">Image</th>
+              <th scope="col">Name</th>
+              <th scope="col">Phone</th>
+              <th scope="col">Email</th>
+              <th scope="col">DOB</th>
+            </tr>
+          </thead> */}
+          <tbody>
+            <tr key={index}>
+              <th scope="row"></th>
+              <img src={item.picture.thumbnail} alt="Thumbnail"/>
+              <td>{item.name.first}{item.name.last}</td>
+              <td>{item.phone}</td>
+              <td>{item.email}</td>
+              <td>{item.dob.date}</td>
+            </tr>
+          </tbody>
+        </table>
+      )
+    })
   }
 }
 
 
 
 
-export default List;
+  export default List;
 
