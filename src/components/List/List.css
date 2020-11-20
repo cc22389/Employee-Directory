@@ -3,16 +3,24 @@ li {
 }
 
 #table {
-  text-align: center;
-  /* width: 100%; */
+  text-align: left;
+  margin-left: 10px !important;
 }
 
 #table td {
-  padding: 15px !important;
+  padding: 10px !important;
 }
 
-/* #table tr {
-  margin-top: 10px !important;
-} */
+#table thead {
+  background-color: lightgray !important;
+}
 
-#table tr:hover {background-color: #ddd;}
+#table tr:hover {
+  background-color: darkolivegreen;
+  color: white;
+}
+
+button {
+  background-color: darkolivegreen;
+  color: lightgray;
+}
