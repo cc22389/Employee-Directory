@@ -15,9 +15,7 @@ Created with React, this application will allow a user to view their entire empl
 
 * [License](#license)
 
-* [Contributing](#contributing)
-
-* [Tests](#tests)
+* [Links](#links)
 
 * [Questions](#questions)
 
@@ -26,12 +24,12 @@ Created with React, this application will allow a user to view their entire empl
 To install necessary dependencies, run the following command:
 
 ```
-npm i
+$ npm node
+
+$ npm i
 ```
 
 ## Usage
-
-No dev or global dependencies are required
 
 To run the application, run the following command:
 ```
@@ -40,37 +38,30 @@ npm start
 
 Here are all the routes that are of interest:  
 
-#### Homepage (/)
-![LastWorkout](/assets/LastWorkout.PNG)
+#### Search table alphabetically
+![Alphabetical-Search](/assets/Alphabetical-Search.PNG)
 
-#### /stats  
-![WorkoutDashboard](/assets/WorkoutDashboard.PNG)  
-
-#### /exercise  
-![AddYorExercise](/assets/AddYourExercise.PNG)
+#### Search table via the search form 
+![Search-Bar-Search](/assets/Search-Bar-Search.PNG)  
 
 ## Dependencies
 
 This application is dependant on:
-* Express 4.16.3
-* Mongoose 5.3.16
-* Morgan 1.9.1 
+* Axios ^0.12.0
+* Bootstrap ^4.5.3
+* React ^17.0.1
+* React-router-dom ^5.2.0
+* React-scripts ^4.0.0
+* Web-vitals ^0.2.4
 
 ## License
 
 This project is licensed under the Unlicense license.
-  
-## Contributing
 
-No need to contribute for this example
+## Links
 
-## Tests
-
-To run tests, run the following command:
-
-```
-npm test
-```
+* GitHub Repository - https://github.com/cc22389/Employee-Directory.git
+* Heroku Deployed URL - https://employe-e-directory.herokuapp.com/
 
 ## Questions
 
